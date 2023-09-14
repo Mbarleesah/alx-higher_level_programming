@@ -1,19 +1,20 @@
 #include "lists.h"
+
 /**
-* dlistint_len - function
-* @h: pointer to head node of list
-*
-* Description: function to return number of elements in a lnkd list
-* Return: Number of elements
-*/
+ * dlistint_len - Return list len
+ * @h: struct list
+ * Return: list_len
+ */
+
 size_t dlistint_len(const dlistint_t *h)
 {
-	int elements = 0;
+	size_t len = 0;
+	int i = 0;
 
-	while (h != NULL)
+	for (i = 0; h; i++)
 	{
+		len += 1;
 		h = h->next;
-		elements++;
 	}
-	return (elements);
+	return (len);
 }

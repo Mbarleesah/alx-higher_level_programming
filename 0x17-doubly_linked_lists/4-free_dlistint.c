@@ -1,23 +1,21 @@
 #include "lists.h"
+#include <stdlib.h>
+
 /**
-* free_dlistint - function
-* @head: pointer to first node of dbl lnkd list
-*
-* Decription: function to free a a dbl lnkd list
-* Return: 0 (success)
-*/
+ * free_dlistint - free a list
+ * @head: list
+ * Return: Void
+ */
+
 void free_dlistint(dlistint_t *head)
 {
-	dlistint_t *temph = head;
+	dlistint_t *start, *check;
 
-	if (head == NULL)
-		return;
-
-	while (head->next != NULL)
+	start = head;
+	while (start != NULL)
 	{
-		temph = head;
-		head = head->next;
-		free(temph);
+		check = start->next;
+		free(start);
+		start = check;
 	}
-	free(head);
 }

@@ -1,29 +1,21 @@
 #include "lists.h"
+
 /**
-* get_dnodeint_at_index - function
-* @head: pointer to first node in lnkd list
-* @index: space in index to get node
-*
-* Description: function to return the nth node of a dbl lnkd list
-* Return: nth node or if node doesn't exist, NULL
-*/
+ * get_dnodeint_at_index - get node by index
+ * @head: list
+ * @index: index of element
+ * Return: element by index
+ */
+
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
-	dlistint_t *temph;
-	unsigned int toindex = 0;
+	unsigned int c;
 
-	temph = head;
-
-	while (temph != NULL)
+	for (c = 0; c < index && head->next; c++)
 	{
-		if (toindex == index)
-			return (temph);
-		toindex++;
-		temph = temph->next;
+		head = head->next;
 	}
-	if (toindex == 0 || toindex < index)
-		return (temph);
-
-	temph = head;
-	return (temph->next);
+	if (c < index)
+		return (NULL);
+	return (head);
 }
